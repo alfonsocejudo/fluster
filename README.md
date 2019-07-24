@@ -3,6 +3,8 @@ Fluster = Flutter + Cluster
 A geospatial point clustering library for Dart (Flutter not actually required).
 Essentially a Dart port of [supercluster](https://github.com/mapbox/supercluster).
 
+![Image](fluster.gif?raw=true)
+
 ## Usage
 
 ### Implement Clusterable
