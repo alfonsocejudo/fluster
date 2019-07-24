@@ -4,4 +4,6 @@
 
 library fluster;
 
+export 'src/base_cluster.dart';
+export 'src/clusterable.dart';
 export 'src/fluster.dart';
