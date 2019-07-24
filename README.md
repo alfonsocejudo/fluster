@@ -1,3 +1,5 @@
+[![Pub](https://img.shields.io/pub/v/fluster.svg?style=for-the-badge)](https://pub.dev/packages/fluster)
+
 Fluster = Flutter + Cluster
 
 A geospatial point clustering library for Dart (Flutter not actually required).
@@ -86,5 +88,3 @@ You can also get all the points inside a cluster, given the cluster id:
 ```dart
 List<MapMarker> points = fluster.points(clusterId);
 ```
-
-
