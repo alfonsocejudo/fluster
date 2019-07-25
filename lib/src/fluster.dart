@@ -4,8 +4,6 @@
 
 import 'dart:math' as math;
 
-import 'package:meta/meta.dart';
-
 import 'base_cluster.dart';
 import 'cluster.dart';
 import 'clusterable.dart';
@@ -40,13 +38,13 @@ class Fluster<T extends Clusterable> {
   final T Function(BaseCluster, double, double) _createCluster;
 
   Fluster(
-      {@required this.minZoom,
-      @required this.maxZoom,
-      @required this.radius,
-      @required this.extent,
-      @required this.nodeSize,
-      @required points,
-      @required createCluster})
+      {this.minZoom,
+      this.maxZoom,
+      this.radius,
+      this.extent,
+      this.nodeSize,
+      points,
+      createCluster})
       : _points = points,
         _trees = List(maxZoom + 2),
         _createCluster = createCluster {

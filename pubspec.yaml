@@ -1,14 +1,11 @@
 name: fluster
 description: A geospatial point clustering library for Dart.
-version: 1.0.3
+version: 1.0.6
 homepage: https://github.com/alfonsocejudo/fluster
 author: Alfonso Cejudo <fonz@happeningsoft.com>
 
 environment:
   sdk: '>=2.4.0 <3.0.0'
-
-dependencies:
-  meta: ^1.1.6
 
 dev_dependencies:
   pedantic: ^1.7.0

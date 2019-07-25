@@ -12,7 +12,7 @@ abstract class Clusterable {
   double longitude;
 
   /// Denote that the instance is either a cluster or an individual data point.
-  bool isCluster;
+  bool isCluster = false;
 
   /// Unique id for use in cluster algorithm indexing.
   int clusterId;
@@ -27,4 +27,13 @@ abstract class Clusterable {
 
   /// Useful for representing a cluster by referencing one of its children.
   String childMarkerId;
+
+  Clusterable(
+      {this.latitude,
+      this.longitude,
+      this.isCluster,
+      this.clusterId,
+      this.pointsSize,
+      this.markerId,
+      this.childMarkerId});
 }
