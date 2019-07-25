@@ -1,3 +1,7 @@
+## 1.1.0
+
+- Updated fluster_example.dart
+
 ## 1.0.6
 
 - Added Clusterable default value isCluster = false
