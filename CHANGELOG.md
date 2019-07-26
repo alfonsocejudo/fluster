@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Added Travis CI support
+
 ## 1.1.0
 
 - Updated fluster_example.dart

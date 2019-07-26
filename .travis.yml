@@ -1,0 +1,19 @@
+language: dart
+
+branches:
+  only:
+    - master
+
+jobs:
+  include:
+    - stage: analyze_and_format
+      script:
+        - dartanalyzer --fatal-warnings .
+        - dartfmt
+    - stage: unit_test
+      script:
+        - test
+
+stages:
+  - analyze_and_format
+  - unit_test

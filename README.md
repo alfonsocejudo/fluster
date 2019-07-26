@@ -1,9 +1,10 @@
-[![Pub](https://img.shields.io/pub/v/fluster.svg?style=for-the-badge)](https://pub.dev/packages/fluster)
+[![Build Status](https://travis-ci.com/alfonsocejudo/fluster.svg?branch=master)](https://travis-ci.com/alfonsocejudo/fluster)
+[![Pub](https://img.shields.io/pub/v/fluster.svg)](https://pub.dev/packages/fluster)
 
 Fluster = Flutter + Cluster
 
 A geospatial point clustering library for Dart (Flutter not actually required).
-Essentially a Dart port of [supercluster](https://github.com/mapbox/supercluster).
+The algorithm is a Dart port of [supercluster](https://github.com/mapbox/supercluster).
 
 ![Image](fluster.gif?raw=true)
 
@@ -12,15 +13,31 @@ Essentially a Dart port of [supercluster](https://github.com/mapbox/supercluster
 ### Implement Clusterable
 
 Fluster will cluster a List of objects that conform to the Clusterable abstract
-class, which includes necessary information such as latitude and longitude.
+class, which includes necessary information such as latitude and longitude:
 
 ```dart
 class MapMarker extends Clusterable {
-  String markerId;
-  double latitude;
-  double longitude;
+  String locationName;
+  String thumbnailSrc;
 
-  MapMarker({this.markerId, this.latitude, this.longitude});
+  MapMarker(
+      {this.locationName,
+      latitude,
+      longitude,
+      this.thumbnailSrc,
+      isCluster = false,
+      clusterId,
+      pointsSize,
+      markerId,
+      childMarkerId})
+      : super(
+            latitude: latitude,
+            longitude: longitude,
+            isCluster: isCluster,
+            clusterId: clusterId,
+            pointsSize: pointsSize,
+            markerId: markerId,
+            childMarkerId: childMarkerId);
 }
 ```
 
@@ -81,9 +98,19 @@ bounding box = [southwestLng, southwestLat, northeastLng, northeastLat]:
 List<MapMarker> clusters = fluster.clusters([-180, -85, 180, 85], _currentZoom);
 ```
 
+### Get the cluster children
+
+You can also get the children (points and sub-clusters inside a cluster at the
+next zoom level, given the cluster id:
+
+```dart
+List<MapMarker> chilren = fluster.children(int clusterId);
+```
+
 ### Get the cluster points
 
-You can also get all the points inside a cluster, given the cluster id:
+Get only the child points (not sub-clusters) of a cluster in all the remaining
+zoom levels, given the cluster id:
 
 ```dart
 List<MapMarker> points = fluster.points(clusterId);
