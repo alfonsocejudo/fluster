@@ -1,6 +1,6 @@
 name: fluster
-description: A geospatial point clustering library for Dart.
-version: 1.1.1
+description: A geospatial point clustering library for Dart to help provide spacing between markers in mapping solutions.
+version: 1.1.2
 homepage: https://github.com/alfonsocejudo/fluster
 author: Alfonso Cejudo <fonz@happeningsoft.com>
 
