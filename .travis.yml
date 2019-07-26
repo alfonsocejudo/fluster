@@ -9,7 +9,7 @@ jobs:
     - stage: analyze_and_format
       script:
         - dartanalyzer --fatal-warnings .
-        - dartfmt
+        - dartfmt -n --set-exit-if-changed .
     - stage: unit_test
       script:
         - test
