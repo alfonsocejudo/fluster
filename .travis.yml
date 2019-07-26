@@ -12,7 +12,7 @@ jobs:
         - dartfmt -n --set-exit-if-changed .
     - stage: unit_test
       script:
-        - test
+        - pub run test
 
 stages:
   - analyze_and_format
