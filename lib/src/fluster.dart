@@ -168,7 +168,7 @@ class Fluster<T extends Clusterable> {
       return;
     } else {
       for (T child in childList) {
-        if (child.isCluster) {
+        if (child.isCluster != null && child.isCluster) {
           _extractClusterPoints(child.clusterId, points);
         } else {
           points.add(child);
