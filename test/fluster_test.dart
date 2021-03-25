@@ -5,13 +5,12 @@
 import 'package:test/test.dart';
 
 import 'package:fluster/fluster.dart';
-import 'package:fluster/src/clusterable.dart';
 
 import 'common.dart';
 
 void main() {
   group('Fluster API Tests', () {
-    Fluster fluster;
+    late Fluster fluster;
 
     setUp(() {
       fluster = Fluster(
@@ -20,7 +19,7 @@ void main() {
           radius: 150,
           extent: 2048,
           nodeSize: 0,
-          points: List<Clusterable>(),
+          points: [],
           createCluster: (cluster, longitude, latitude) {
             return MockClusterable();
           });

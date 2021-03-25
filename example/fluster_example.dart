@@ -57,8 +57,8 @@ main() {
 }
 
 class MapMarker extends Clusterable {
-  String locationName;
-  String thumbnailSrc;
+  String? locationName;
+  String? thumbnailSrc;
 
   MapMarker(
       {this.locationName,
