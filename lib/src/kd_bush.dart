@@ -20,7 +20,7 @@ class KDBush {
     ids = List.filled(points.length, 0);
     coordinates = List.filled(points.length * 2, 0.0);
 
-    for (int i = 0; i < points.length; i++) {
+    for (var i = 0; i < points.length; i++) {
       ids[i] = i;
       coordinates[i * 2] = points[i].x ?? 0.0;
       coordinates[(i * 2) + 1] = points[i].y ?? 0.0;
@@ -36,7 +36,7 @@ class KDBush {
     );
   }
 
-  _sortKD({
+  void _sortKD({
     required List<int> ids,
     required List<double> coordinates,
     required int nodeSize,
@@ -48,7 +48,7 @@ class KDBush {
       return null;
     }
 
-    int m = (left + right) >> 1;
+    var m = (left + right) >> 1;
 
     _select(
         ids: ids,
@@ -75,12 +75,12 @@ class KDBush {
   }
 
   List<int> range(double minX, double minY, double maxX, double maxY) {
-    Queue stack = Queue();
+    var stack = Queue();
     stack.add(0);
     stack.add(ids.length - 1);
     stack.add(0);
 
-    List<int> result = [];
+    var result = <int>[];
 
     while (stack.isNotEmpty) {
       int axis = stack.removeLast();
@@ -88,9 +88,9 @@ class KDBush {
       int left = stack.removeLast();
 
       if (right - left <= nodeSize) {
-        for (int i = left; i <= right; i++) {
-          double x = coordinates[i * 2];
-          double y = coordinates[i * 2 + 1];
+        for (var i = left; i <= right; i++) {
+          var x = coordinates[i * 2];
+          var y = coordinates[i * 2 + 1];
 
           if (x >= minX && x <= maxX && y >= minY && y <= maxY) {
             result.add(ids[i]);
@@ -100,10 +100,10 @@ class KDBush {
         continue;
       }
 
-      int m = (left + right) >> 1;
+      var m = (left + right) >> 1;
 
-      double x = coordinates[m * 2];
-      double y = coordinates[m * 2 + 1];
+      var x = coordinates[m * 2];
+      var y = coordinates[m * 2 + 1];
 
       if (x >= minX && x <= maxX && y >= minY && y <= maxY) {
         result.add(ids[m]);
@@ -126,13 +126,13 @@ class KDBush {
   }
 
   List<int> within(double qx, double qy, double r) {
-    Queue stack = Queue();
+    var stack = Queue();
     stack.add(0);
     stack.add(ids.length - 1);
     stack.add(0);
 
-    List<int> result = [];
-    double r2 = r * r;
+    var result = <int>[];
+    var r2 = r * r;
 
     while (stack.isNotEmpty) {
       int axis = stack.removeLast();
@@ -140,7 +140,7 @@ class KDBush {
       int left = stack.removeLast();
 
       if (right - left <= nodeSize) {
-        for (int i = left; i <= right; i++) {
+        for (var i = left; i <= right; i++) {
           final squared = _squaredDistance(
             coordinates[i * 2],
             coordinates[i * 2 + 1],
@@ -155,10 +155,10 @@ class KDBush {
         continue;
       }
 
-      int m = (left + right) >> 1;
+      var m = (left + right) >> 1;
 
-      double x = coordinates[m * 2];
-      double y = coordinates[m * 2 + 1];
+      var x = coordinates[m * 2];
+      var y = coordinates[m * 2 + 1];
 
       if (_squaredDistance(x, y, qx, qx) <= r2) {
         result.add(ids[m]);
@@ -190,14 +190,14 @@ class KDBush {
   }) {
     while (right > left) {
       if (right - left > 600) {
-        int n = right - left + 1;
-        int m = k - left + 1;
-        double z = math.log(n);
-        double s = 0.5 * math.exp(2 * z / 3);
-        double sd =
+        var n = right - left + 1;
+        var m = k - left + 1;
+        var z = math.log(n);
+        var s = 0.5 * math.exp(2 * z / 3);
+        var sd =
             0.5 * math.sqrt(z * s * (n - s) / n) * (m - n / 2 < 0 ? -1 : 1);
-        int newLeft = (math.max(left, (k - m * s / n + sd).floor())).toInt();
-        int newRight =
+        var newLeft = (math.max(left, (k - m * s / n + sd).floor())).toInt();
+        var newRight =
             (math.min(right, (k + (n - m) * s / n + sd).floor())).toInt();
         _select(
             ids: ids,
@@ -208,9 +208,9 @@ class KDBush {
             axis: axis);
       }
 
-      double t = coordinates[k * 2 + axis];
-      int i = left;
-      int j = right;
+      var t = coordinates[k * 2 + axis];
+      var i = left;
+      var j = right;
 
       _swapItem(ids: ids, coordinates: coordinates, i: left, j: k);
       if (coordinates[right * 2 + axis] > t) {
@@ -264,7 +264,7 @@ class KDBush {
     required int i,
     required int j,
   }) {
-    int temp = list[i];
+    var temp = list[i];
     list[i] = list[j];
     list[j] = temp;
   }
@@ -274,14 +274,14 @@ class KDBush {
     required int i,
     required int j,
   }) {
-    double temp = list[i];
+    var temp = list[i];
     list[i] = list[j];
     list[j] = temp;
   }
 
   double _squaredDistance(double ax, double ay, double bx, double by) {
-    double dx = ax - bx;
-    double dy = ay - by;
+    var dx = ax - bx;
+    var dy = ay - by;
 
     return dx * dx + dy * dy;
   }

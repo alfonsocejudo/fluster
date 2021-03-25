@@ -63,7 +63,7 @@ class Fluster<T extends Clusterable> {
       nodeSize: nodeSize,
     );
 
-    for (int z = maxZoom; z >= minZoom; z--) {
+    for (var z = maxZoom; z >= minZoom; z--) {
       clusters = _buildClusters(clusters, z);
 
       _trees[z] = KDBush(points: clusters, nodeSize: nodeSize);

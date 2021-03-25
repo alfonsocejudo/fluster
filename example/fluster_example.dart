@@ -6,10 +6,10 @@ import 'package:fluster/fluster.dart';
 import 'package:fluster/src/base_cluster.dart';
 import 'package:fluster/src/clusterable.dart';
 
-main() {
+void main() {
   const currentZoom = 10;
 
-  List<MapMarker> markers = [
+  var markers = <MapMarker>[
     MapMarker(
         locationName: 'One',
         markerId: '9000001',
@@ -32,7 +32,7 @@ main() {
         longitude: -77.019908),
   ];
 
-  Fluster<MapMarker> fluster = Fluster<MapMarker>(
+  var fluster = Fluster<MapMarker>(
       minZoom: 0,
       maxZoom: 21,
       radius: 150,
@@ -50,8 +50,7 @@ main() {
               markerId: cluster.id.toString(),
               childMarkerId: cluster.childMarkerId));
 
-  List<MapMarker> clusters =
-      fluster.clusters([-180, -85, 180, 85], currentZoom);
+  var clusters = fluster.clusters([-180, -85, 180, 85], currentZoom);
 
   print('Number of clusters at zoom $currentZoom: ${clusters.length}');
 }
