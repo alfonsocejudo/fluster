@@ -3,8 +3,8 @@
  */
 
 import 'package:fluster/fluster.dart';
-import 'package:fluster/src/base_cluster.dart';
-import 'package:fluster/src/clusterable.dart';
+import 'package:fluster/src/data/base_cluster.dart';
+import 'package:fluster/src/data/clusterable.dart';
 
 main() {
   const currentZoom = 10;
@@ -57,8 +57,8 @@ main() {
 }
 
 class MapMarker extends Clusterable {
-  String locationName;
-  String thumbnailSrc;
+  String? locationName;
+  String? thumbnailSrc;
 
   MapMarker(
       {this.locationName,
