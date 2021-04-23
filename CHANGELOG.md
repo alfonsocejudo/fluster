@@ -1,3 +1,7 @@
+## [1.2.0] - 2021-04-23
+
+- Added Dart null safety feature
+
 ## 1.1.2
 
 - Updated description field in pubspec.
