@@ -149,6 +149,20 @@ class Fluster<T extends Clusterable> {
     return children;
   }
 
+  /// Returns the zoom on which the cluster expands into several children
+  /// (useful for "click to zoom" feature) given the cluster's clusterId.
+  int getClusterExpansionZoom(int clusterId) {
+    int expansionZoom = (clusterId % 32) - 1;
+    while (expansionZoom < this.maxZoom) {
+      final children = this.children(clusterId);
+      expansionZoom++;
+      if (children == null || children.isEmpty) break;
+      if (children.indexWhere((element) => !element.isCluster) != -1) break;
+      clusterId = children.first.clusterId;
+    }
+    return expansionZoom;
+  }
+
   /// Returns a list of standalone points (not clusters) that are children of
   /// the given cluster.
   List<T> points(int clusterId) {
