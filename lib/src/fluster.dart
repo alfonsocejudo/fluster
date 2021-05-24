@@ -181,7 +181,14 @@ class Fluster<T extends Clusterable> {
     var y = _latY(feature.latitude!);
 
     return PointCluster(
-        x: x, y: y, zoom: 24, index: id, markerId: feature.markerId);
+      x: x,
+      y: y,
+      zoom: 24,
+      index: id,
+      markerId: feature.markerId,
+      callbackFunction: feature.callbackFunction,
+      title: feature.title,
+    );
   }
 
   List<BaseCluster> _buildClusters(List<BaseCluster> points, int zoom) {
@@ -241,11 +248,14 @@ class Fluster<T extends Clusterable> {
       } else {
         p.parentId = id;
         clusters.add(Cluster(
-            x: wx / pointsSize,
-            y: wy / pointsSize,
-            id: id,
-            pointsSize: pointsSize,
-            childMarkerId: childMarkerId));
+          x: wx / pointsSize,
+          y: wy / pointsSize,
+          id: id,
+          pointsSize: pointsSize,
+          childMarkerId: childMarkerId,
+          callbackFunction: p.callbackFunction,
+          title: p.title,
+        ));
       }
     }
 
