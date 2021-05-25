@@ -28,12 +28,21 @@ abstract class Clusterable {
   /// Useful for representing a cluster by referencing one of its children.
   String? childMarkerId;
 
-  Clusterable(
-      {this.latitude,
-      this.longitude,
-      this.isCluster,
-      this.clusterId,
-      this.pointsSize,
-      this.markerId,
-      this.childMarkerId});
+  /// Useful for handling tap on cluster
+  Function? callbackFunction;
+
+  /// Useful for assigning title on cluster
+  String? title;
+
+  Clusterable({
+    this.latitude,
+    this.longitude,
+    this.isCluster,
+    this.clusterId,
+    this.pointsSize,
+    this.markerId,
+    this.childMarkerId,
+    this.callbackFunction,
+    this.title,
+  });
 }

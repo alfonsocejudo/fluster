@@ -17,4 +17,10 @@ class BaseCluster {
 
   /// For clusters that wish to display one representation of its children.
   String? childMarkerId;
+
+  /// Useful for handling tap on cluster
+  Function? callbackFunction;
+
+  /// Useful for assigning title on cluster
+  String? title;
 }

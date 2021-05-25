@@ -11,6 +11,8 @@ class PointCluster extends BaseCluster {
     int? zoom,
     int? index,
     String? markerId,
+    Function? callbackFunction,
+    String? title,
   }) {
     this.x = x;
     this.y = y;
@@ -20,5 +22,8 @@ class PointCluster extends BaseCluster {
 
     parentId = -1;
     isCluster = false;
+
+    this.callbackFunction = callbackFunction;
+    this.title = title;
   }
 }
