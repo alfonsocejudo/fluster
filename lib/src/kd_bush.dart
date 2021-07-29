@@ -160,7 +160,7 @@ class KDBush {
       var x = coordinates[m * 2];
       var y = coordinates[m * 2 + 1];
 
-      if (_squaredDistance(x, y, qx, qx) <= r2) {
+      if (_squaredDistance(x, y, qx, qy) <= r2) {
         result.add(ids[m]);
       }
 
